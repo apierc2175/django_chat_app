@@ -5,4 +5,5 @@ app_name = 'chats'
 
 urlpatterns = [
     path("", views.index, name='index'),
+    path('add/', views.CreateView.as_view(), name='create'),
 ]

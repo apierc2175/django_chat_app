@@ -20,3 +20,10 @@ def index(request):
     }
 
     return render(request, 'chats/index.html', context)
+
+class CreateView(generic.CreateView):
+    model = Topic
+    fields = '__all__'
+    template_name = 'chats/create.html'
+
+    #on my chat maker make a model that is chatDetailView and inside have a def add_comment(self, pk)

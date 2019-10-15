@@ -2,6 +2,10 @@
 {% block content %}
 <h1>Topics</h1>
 {% for chats in chat_list %}
-<p>{{chats.title}}</p>
+<a href="{% url 'chats:create' %}"><p>Add a new topic</p></a>
+<div class="jumbotron">
+  <p>{{chats.title}}</p>
+  <button class="btn btn-primary">Join Thread</button>
+</div>
 {% endfor %}
 {% endblock %}
