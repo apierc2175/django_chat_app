@@ -1,0 +1,7 @@
+{% extends 'registration/base.html' %}
+{% block content %}
+<p>{{ object.user }}</p>
+<p>{{ object.bio }}</p>
+<p>{{ object.location }}</p>
+<img src="{{ object.avatar.url }}" alt="{{ avatar.user }}">
+{% endblock content %}

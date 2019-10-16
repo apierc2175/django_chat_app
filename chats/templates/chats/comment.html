@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>{{object.name}}</h1>
-<form action="{% url 'chats:comment_form' object.id %}" method="post">
+<form action="{% url 'chats:comment' object.id %}" method="post">
   {% csrf_token %}
   <input type="text" name="text">
     <button>Add Comment</button>

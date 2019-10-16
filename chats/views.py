@@ -12,6 +12,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
+User = get_user_model()
+
 def index(request):
     chat_list = Topic.objects.all()
 
@@ -30,6 +32,7 @@ class CreateView(generic.CreateView):
 class CommentCreateView(generic.CreateView):
     model = Comment
     fields = ('text', 'created_by')
+    success_url = reverse_lazy('create')
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -39,5 +42,10 @@ class CommentCreateView(generic.CreateView):
 
 class ChatDetailView(generic.DetailView):
     model = Topic
+    template_name = 'chats/comment.html'
+
+class ChatListView(generic.DetailView):
+    model = Topic
+    template_name = 'chats/comment.html'
 
     #on my chat maker make a model that is chatDetailView and inside have a def add_comment(self, pk)
