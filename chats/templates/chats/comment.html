@@ -2,13 +2,16 @@
 
 {% block content %}
 <h1>{{object.name}}</h1>
-<form action="{% url 'chats:comment' object.id %}" method="post">
+<h1>{{chat.title}}</h1>
+<form method="post">
   {% csrf_token %}
   <input type="text" name="text">
     <button>Add Comment</button>
 </form>
 
-{% for comment in object.comment_set.all %}
-<p>{{comment.text}}</p>
+{% for comment in comment_list %}
+<ul>
+  <li>{{comment.text}}</li>
+</ul>
 {% endfor %}
 {% endblock %}

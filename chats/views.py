@@ -23,6 +23,15 @@ def index(request):
 
     return render(request, 'chats/index.html', context)
 
+def comment(request):
+    comment_list = Comment.objects.all()
+
+    context = {
+        'comment_list': comment_list,
+    }
+
+    return render(request, 'chats/comment.html', context)
+
 class CreateView(generic.CreateView):
     model = Topic
     fields = '__all__'
@@ -32,12 +41,14 @@ class CreateView(generic.CreateView):
 class CommentCreateView(generic.CreateView):
     model = Comment
     fields = ('text', 'created_by')
-    success_url = reverse_lazy('create')
+    template_name = 'chats/comment.html'
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        form.instance.chat_id = self.kwargs['pk']
-        return super().form_valid(form)
+    # success_url = reverse_lazy('create')
+    #
+    # def form_valid(self, form):
+    #     form.instance.created_by = self.request.user
+    #     form.instance.chat_id = self.kwargs['pk']
+    #     return super().form_valid(form)
 
 
 class ChatDetailView(generic.DetailView):

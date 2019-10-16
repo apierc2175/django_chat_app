@@ -18,13 +18,18 @@ User = get_user_model()
 
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('accounts:login')
     template_name = 'registration/signup.html'
+
+class LoginView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = 'login.html'
+    success_url = reverse_lazy('index')
 
 class ProfileCreateView(generic.CreateView):
     model = Profile
     template_name = 'registration/profile_create.html'
-    success_url = reverse_lazy('registration/profile_detail.html')
+    success_url = reverse_lazy('chats:index')
     # success_url = reverse_lazy('accounts:profile-detail')
     fields = ('bio', 'location', 'avatar',)
 
