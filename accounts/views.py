@@ -41,6 +41,9 @@ class ProfileDetailView(generic.DetailView):
     model = Profile
     template_name = 'registration/profile_detail.html'
 
+    def get_object(self):
+        return get_object_or_404(User, pk=self.request.user.id)
+
 
 class UserCommentDetailView(generic.DetailView):
     model = User
