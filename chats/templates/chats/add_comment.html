@@ -1,17 +1,10 @@
 {% extends 'chats/base.html' %}
 
 {% block content %}
-<h1>{{object.name}}</h1>
-<h1>{{chat.title}}</h1>
+<h1>add a comment</h1>
 <form method="post">
   {% csrf_token %}
   <input type="text" name="text">
     <button>Add Comment</button>
 </form>
-
-{% for comment in comment_list %}
-<ul>
-  <li>{{comment.text}}</li>
-</ul>
-{% endfor %}
 {% endblock %}

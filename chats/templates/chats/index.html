@@ -1,12 +1,11 @@
 {% extends 'chats/base.html' %}
 {% block content %}
 <h1>Topics</h1>
-<h1>Hello {{request.user.username}}</h1>
 <a href="{% url 'chats:create' %}"><p>Add a new topic</p></a>
-{% for chat in chat_list %}
+{% for topic in chat_list %}
 <div class="jumbotron">
-  <p>{{chat.title}}</p>
-  <a href="{% url 'chats:comment' chat.id %}"><button type='button' class="btn btn-primary">Join Thread</button></a>
+  <p>{{topic.title}}</p>
+  <a href="{% url 'chats:topic_detail' topic.id %}"><button type='button' class="btn btn-primary">Join Thread</button></a>
 </div>
 {% endfor %}
 {% endblock %}

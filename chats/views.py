@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.views.generic.edit import CreateView
 #reverse lazy allows it to fully complete before executing
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import DeleteView
 from .models import Topic, Comment
 from django.contrib.auth.forms import UserCreationForm
@@ -40,20 +40,18 @@ class CreateView(generic.CreateView):
 
 class CommentCreateView(generic.CreateView):
     model = Comment
-    fields = ('text', 'created_by')
-    template_name = 'chats/comment.html'
+    fields = ('text',)
+    template_name = 'chats/add_comment.html'
 
-    # success_url = reverse_lazy('create')
-    #
-    # def form_valid(self, form):
-    #     form.instance.created_by = self.request.user
-    #     form.instance.chat_id = self.kwargs['pk']
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        form.instance.topic_id = self.kwargs['pk']
+        return super(CommentCreateView, self).form_valid(form)
 
 
-class ChatDetailView(generic.DetailView):
+class TopicDetailView(generic.DetailView):
     model = Topic
-    template_name = 'chats/comment.html'
+    template_name = 'chats/topic_detail.html'
 
 class ChatListView(generic.DetailView):
     model = Topic

@@ -7,6 +7,7 @@
   <body>
     <header>
       <h1>theChatterBox</h1>
+      <h1>Hello {{request.user.username}}</h1>
       <ul>
         <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
         <li><a href="{% url 'accounts:login' %}">Login</a></li>

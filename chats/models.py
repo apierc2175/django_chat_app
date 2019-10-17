@@ -24,4 +24,4 @@ class Comment(models.Model):
         return self.text
 
     def get_absolute_url(self):
-        return reverse('chats:comment', args=(self.topic_id))
+        return reverse('chats:topic_detail', args=(self.topic_id,))

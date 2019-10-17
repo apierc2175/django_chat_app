@@ -1,6 +1,7 @@
 {% extends 'chats/base.html' %}
 
 {% block content %}
+<h2>Add a Topic</h2>
   <form method="post">
     {% csrf_token %}
     {{form.as_p}}
