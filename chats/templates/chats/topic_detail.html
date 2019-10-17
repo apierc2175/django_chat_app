@@ -8,9 +8,10 @@
   <input type="text" name="text">
     <button>Add Comment</button>
 </form>
-<p>{{object.title}}</p>
+<h1>{{object.title}}</h1>
 {% for comment in object.comment_set.all %}
   <div class="jumbotron">
+    <p>{{comment.created_by}} thinks </p>
     <p>{{comment.text}}</p>
   </div>
 {% endfor %}
