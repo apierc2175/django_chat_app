@@ -23,6 +23,15 @@ def index(request):
 
     return render(request, 'chats/index.html', context)
 
+def your_comment(request):
+    your_comment_list = comment_list = User.objects.filter()
+
+    context = {
+        'your_comment_list': your_comment_list,
+    }
+
+    return render(request, 'chats/your_comment.html', context)
+
 def comment(request):
     comment_list = Comment.objects.all()
 

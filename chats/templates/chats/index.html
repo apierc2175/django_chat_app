@@ -6,6 +6,7 @@
 <div class="jumbotron">
   <p>{{topic.title}}</p>
   <a href="{% url 'chats:topic_detail' topic.id %}"><button type='button' class="btn btn-primary">Join Thread</button></a>
+  <a href="{% url 'chats:your_comment' topic.id %}"><button type='button' class="btn btn-primary">View your Comments</button></a>
 </div>
 {% endfor %}
 {% endblock %}

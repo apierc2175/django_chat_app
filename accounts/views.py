@@ -40,3 +40,11 @@ class ProfileCreateView(generic.CreateView):
 class ProfileDetailView(generic.DetailView):
     model = Profile
     template_name = 'registration/profile_detail.html'
+
+
+class UserCommentDetailView(generic.DetailView):
+    model = User
+    template_name = 'user_comment.html'
+
+    def get_object(self):
+        return get_object_or_404(User, pk=self.request.user.id)

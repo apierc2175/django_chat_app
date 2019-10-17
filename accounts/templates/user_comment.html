@@ -1,0 +1,5 @@
+<div class="">{{user.username}}</div>
+
+{% for comment in user.comment_set.all %}
+<div class="">{{comment.text}}</div>
+{% endfor %}
