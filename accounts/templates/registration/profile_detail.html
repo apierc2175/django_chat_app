@@ -1,7 +1,11 @@
 {% extends 'chats/base.html' %}
 {% block content %}
-<p>{{ object.user }}</p>
-<p>{{ object.bio }}</p>
-<p>{{ object.location }}</p>
-<img src="{{ object.avatar.url }}" alt="{{ avatar.user }}">
+{% for profile in profile_list %}
+
+<p>{{ profile.user }}</p>
+<p>{{ profile.bio }}</p>
+<p>{{ profile.location }}</p>
+<p>{{ profile.avatar }}</p>
+<img src="{{ profile.avatar.url }}" alt="{{ avatar.user }}">
+{% endfor %}
 {% endblock content %}

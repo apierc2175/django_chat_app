@@ -37,6 +37,15 @@ class ProfileCreateView(generic.CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+def profile_detail(request):
+    profile_list = Profile.objects.all()
+
+    context = {
+        'profile_list': profile_list,
+    }
+
+    return render(request, 'registration/profile_detail.html', context)
+
 class ProfileDetailView(generic.DetailView):
     model = Profile
     template_name = 'registration/profile_detail.html'
