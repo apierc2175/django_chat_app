@@ -1,11 +1,24 @@
 {% extends 'chats/base.html' %}
 {% block content %}
 {% for profile in profile_list %}
+{% if forloop.first %}
 
-<p>{{ profile.user }}</p>
-<p>{{ profile.bio }}</p>
-<p>{{ profile.location }}</p>
-<p>{{ profile.avatar }}</p>
-<img src="{{ profile.avatar.url }}" alt="{{ avatar.user }}">
+<table class="table table-dark">
+  <thead>
+    <th scope="col" class="username">Username</th>
+    <th scope="col" class="location">Location</th>
+    <th scope="col" class="bio">Bio</th>
+    <th scope="col" class="picture">Profile Picture</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="username">{{ profile.user }}</td>
+      <td class="location">{{ profile.location }}</td>
+      <td class="bio">{{ profile.bio }}</td>
+      <td class="picture"><img src="{{ profile.avatar.url }}" alt="{{ avatar.user }}"></td>
+    </tr>
+  </tbody>
+</table>
+{%endif%}
 {% endfor %}
 {% endblock content %}
