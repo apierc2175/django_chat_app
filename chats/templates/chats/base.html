@@ -1,19 +1,31 @@
+{% load static %}
 <html lang="en">
   <head>
     <title>theChatterBox</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'chats/style.css' %}">
   </head>
   <body>
     <header>
-      <h1>theChatterBox</h1>
-      <h1>Hello {{request.user.username}}</h1>
-      <ul>
-        <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
-        <li><a href="{% url 'accounts:login' %}">Login</a></li>
-        <li><a href="{% url 'accounts:profile-create' %}">Add Profile Information</a></li>
-        <li><a href="{% url 'accounts:profile-detail' %}">View Profile</a></li>
-      </ul>
+      <div class="row">
+        <div class="col-xs-6">
+          <a href="{% url 'chats:index' %}"><h1>theChatterBox</h1></a>
+        </div>
+        <div class="col-xs-3">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item"><a href="{% url 'accounts:signup' %}">Signup</a></li>
+            <li class="list-group-item"><a href="{% url 'accounts:login' %}">Login</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-3">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item"><a href="{% url 'accounts:profile-create' %}">Add Profile</a></li>
+            <li class="list-group-item"><a href="{% url 'accounts:profile-detail' %}">View Profile</a></li>
+          </ul>
+        </div>
+      </div>
+      <h2 class="text-right">Hello {{request.user.username}}</h2>
     </header>
     <main>
       {% block content %}

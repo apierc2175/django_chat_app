@@ -1,5 +1,9 @@
+{% extends 'chats/base.html' %}
+{% load static %}
+{% block content %}
 <div class="">{{user.username}}</div>
 
 {% for comment in user.comment_set.all %}
 <div class="">{{comment.text}}</div>
 {% endfor %}
+{% endblock content %}
