@@ -9,4 +9,6 @@ urlpatterns = [
     # path('<int:pk>/comment/new/', views.ChatDetailView.as_view(), name='comment'),
     path('<int:pk>/comment/new/', views.CommentCreateView.as_view(), name='add_comment'),
     path('<int:pk>/', views.TopicDetailView.as_view(), name='topic_detail'),
+    path('<int:pk>/delete/', views.DeleteView.as_view(), name='delete'),
+
 ]

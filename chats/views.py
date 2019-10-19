@@ -66,4 +66,9 @@ class ChatListView(generic.DetailView):
     model = Topic
     template_name = 'chats/comment.html'
 
+class DeleteView(generic.DeleteView):
+    model = Comment
+    success_url = reverse_lazy('chats:index')
+    template_name = 'chats/delete.html'
+
     #on my chat maker make a model that is chatDetailView and inside have a def add_comment(self, pk)

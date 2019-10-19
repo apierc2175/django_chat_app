@@ -13,6 +13,9 @@
   <div class="jumbotron">
     <p>{{comment.created_by}} thinks </p>
     <p>{{comment.text}}</p>
+    {% ifequal comment.created_by user %}
+      <a href="{% url 'chats:delete'  comment.id %}"><button class="btn btn-danger">Remove this comment</button></a>
+    {% endifequal %}
   </div>
 {% endfor %}
 {% endblock %}

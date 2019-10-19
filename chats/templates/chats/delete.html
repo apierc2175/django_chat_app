@@ -1,0 +1,8 @@
+{% extends 'chats/base.html' %}
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <p> Are you sure you want to delete?</p>
+  <button class="btn btn-danger">Remove</button>
+</form>
+{% endblock %}
