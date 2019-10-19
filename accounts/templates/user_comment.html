@@ -1,9 +1,11 @@
 {% extends 'chats/base.html' %}
 {% load static %}
 {% block content %}
-<div class="">{{user.username}}</div>
-
+<h2>Your Comments</h2>
 {% for comment in user.comment_set.all %}
-<div class="">{{comment.text}}</div>
+<div class="jumbotron">
+  <p>{{comment.text}}</p>
+  <a href="{% url 'chats:delete'  comment.id %}"><button class="btn btn-danger">Remove this comment</button></a>
+</div>
 {% endfor %}
 {% endblock content %}
